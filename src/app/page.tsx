@@ -1,7 +1,8 @@
-import Image from 'next/image'
 import styles from './page.module.css'
+import { getTransactions } from './lib/api/transactions'
 
-export default function Home() {
+export default async function Home() {
+  const transactions = await getTransactions()
   return (
     <main className={styles.main}>
     </main>

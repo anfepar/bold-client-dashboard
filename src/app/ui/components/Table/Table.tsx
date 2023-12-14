@@ -7,6 +7,8 @@ interface TableProps {
 
 export default function Table({ transactions }: TableProps) {
   return ( 
-    
+    <div>
+       
+    </div>
   )
 }

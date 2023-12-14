@@ -1,10 +1,12 @@
+import { Transaction, getTransactions } from './lib/api/transactions'
+import Table from './ui/components/Table/Table'
 import styles from './page.module.css'
-import { getTransactions } from './lib/api/transactions'
 
 export default async function Home() {
-  const transactions = await getTransactions()
+  const transactions: Transaction[] = await getTransactions()
   return (
     <main className={styles.main}>
+      <Table transactions={transactions} />
     </main>
   )
 }

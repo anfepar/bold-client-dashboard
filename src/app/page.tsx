@@ -5,6 +5,7 @@ import { filterTransactions } from './lib/filters'
 import { Filters, RangeFilter } from './lib/types'
 import styles from './page.module.css'
 import { getTransactionsByPage } from './lib/utils/pagination'
+import TableFilters from './ui/components/TableFilters/TableFilters'
 interface PageProps {
   searchParams: { [key: string]: string | string[] | undefined }
 }
@@ -24,6 +25,7 @@ export default async function Home({ searchParams }: PageProps) {
     <main className={styles.main}>
       <section>
         <TotalSales transactions={filteredTransactions} />
+        <TableFilters filters={filters} />
       </section>
       <Table transactions={transactionsByPage} totalItems={totalTransactions.length} />
     </main>

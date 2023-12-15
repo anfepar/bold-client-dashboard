@@ -4,6 +4,5 @@ export type RangeFilter = 'today' | 'week' | 'month'
 
 export interface Filters {
   range?: RangeFilter,
-  type?: TransactionType,
-  page?: number
+  type?: TransactionType
 }

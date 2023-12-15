@@ -1,0 +1,21 @@
+@import ../../vars
+.container
+  background: linear-gradient(90deg, $blue-color 46%, $red-color 98%)
+  padding: 0.3rem
+
+.wrapper
+  max-width: 1200px
+  position: relative
+  margin: auto
+  height: 20px
+
+@media (min-width: $mobile-breakpoint)
+  .container
+    padding: 0.5rem
+  .wrapper
+    height: 30px
+@media (min-width: $tablet-breakpoint)
+  .container
+    padding: 1rem
+  .wrapper
+    height: 40px

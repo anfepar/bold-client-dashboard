@@ -4,6 +4,7 @@ import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 config.autoAddCss = false
 import './ui/globals.sass'
+import Header from './ui/components/Header/Header'
 
 const montserrat = Montserrat({ subsets: ['latin'], display: 'swap' })
 
@@ -22,7 +23,10 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
-      <body className={montserrat.className}>{children}</body>
+      <body className={montserrat.className}>
+        <Header />
+        {children}
+      </body>
     </html>
   )
 }

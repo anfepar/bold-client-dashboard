@@ -27,7 +27,7 @@ export default async function Home({ searchParams }: PageProps) {
         <TotalSales transactions={filteredTransactions} rangeFilter={filters.range} />
         <TableFilters filters={filters} />
       </section>
-      <Table transactions={transactionsByPage} totalItems={totalTransactions.length} rangeFilter={filters.range} />
+      <Table transactions={transactionsByPage} totalItems={filteredTransactions.length} rangeFilter={filters.range} />
     </main>
   )
 }

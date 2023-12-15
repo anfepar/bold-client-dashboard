@@ -25,7 +25,7 @@ export default function Table({ transactions, totalItems }: TableProps) {
       </>
     )
   }, [])
-
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
   return (
     <section>
       <table>

@@ -1,17 +1,20 @@
 import { fireEvent, render } from '@testing-library/react'
 import Pagination from '../Pagination'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 
 jest.mock("next/navigation", () => ({
-  useRouter: jest.fn()
+  useRouter: jest.fn(),
+  useSearchParams: jest.fn()
 }))
 
 const mockUseRouter = useRouter as jest.Mock
+const mockUseSearchParams = useSearchParams as jest.Mock
 
 
 describe('Pagination tests', () => {
   it('should show the correct pages and buttons', () => {
-    const { getByRole, getByTestId, getByText } = render(<Pagination totalItems={30} />)
+    mockUseSearchParams.mockImplementation(() => ({ get: () => 2 }))
+    const { getByRole, getByTestId, getByText } = render(<Pagination totalItems={50} />)
     const firstPageButton = getByTestId('button-first-page');
     const prevPageButton = getByTestId('button-prev-page');
     const nextPageButton = getByTestId('button-next-page');
@@ -30,6 +33,7 @@ describe('Pagination tests', () => {
   })
 
   it('should disable prev button and hide prev page number button when current page is the first one', () => {
+    mockUseSearchParams.mockImplementation(() => ({ get: () => 1 }))
     const { queryByRole, getByTestId } = render(<Pagination totalItems={30} />)
     const prevPageButton = getByTestId('button-prev-page');
     const prevPageNumber = queryByRole('button', { name: '1' })
@@ -38,6 +42,7 @@ describe('Pagination tests', () => {
   })
 
   it('should disable next button and hide next page number button when current page is the last one', () => {
+    mockUseSearchParams.mockImplementation(() => ({ get: () => 2 }))
     const { queryByRole, getByTestId } = render(<Pagination totalItems={30} />)
     const nextPageButton = getByTestId('button-next-page');
     const nextPageNumber = queryByRole('button', { name: '2' })
@@ -51,9 +56,10 @@ describe('Pagination tests', () => {
   })
 
   it('should send correct page to onPageClick function parameter', () => {
+    mockUseSearchParams.mockImplementation(() => ({ get: () => 2 }))
     const mockPushFunction = jest.fn(page => page)
     mockUseRouter.mockImplementation(() => ({ push: mockPushFunction }))
-    const { getByTestId, getByRole } = render(<Pagination totalItems={30} />)
+    const { getByTestId, getByRole } = render(<Pagination totalItems={40} />)
     const firstPageButton = getByTestId('button-first-page');
     const prevPageButton = getByTestId('button-prev-page');
     const nextPageButton = getByTestId('button-next-page');

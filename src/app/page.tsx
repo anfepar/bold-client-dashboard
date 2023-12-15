@@ -23,7 +23,7 @@ export default async function Home({ searchParams }: PageProps) {
 
   return (
     <main className={styles.wrapper}>
-      <section>
+      <section className={styles.page__head}>
         <TotalSales transactions={filteredTransactions} rangeFilter={filters.range} />
         <TableFilters filters={filters} />
       </section>

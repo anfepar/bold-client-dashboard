@@ -3,7 +3,7 @@ import Table from './ui/components/Table/Table'
 import TotalSales from './ui/components/TotalSales/TotalSales'
 import { filterTransactions } from './lib/filters'
 import { Filters, RangeFilter } from './lib/types'
-import styles from './page.module.css'
+import styles from './page.module.sass'
 import { getTransactionsByPage } from './lib/utils/pagination'
 import TableFilters from './ui/components/TableFilters/TableFilters'
 interface PageProps {
@@ -22,12 +22,12 @@ export default async function Home({ searchParams }: PageProps) {
   const transactionsByPage = getTransactionsByPage(filteredTransactions, currentPage)
 
   return (
-    <main className={styles.main}>
-      <section>
-        <TotalSales transactions={filteredTransactions} />
+    <main className={styles.wrapper}>
+      <section className={styles.page__head}>
+        <TotalSales transactions={filteredTransactions} rangeFilter={filters.range} />
         <TableFilters filters={filters} />
       </section>
-      <Table transactions={transactionsByPage} totalItems={totalTransactions.length} />
+      <Table transactions={transactionsByPage} totalItems={totalTransactions.length} rangeFilter={filters.range} />
     </main>
   )
 }

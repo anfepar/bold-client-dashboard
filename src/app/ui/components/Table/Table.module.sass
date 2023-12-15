@@ -1,0 +1,57 @@
+@import ../../vars
+
+.table
+  &__container
+    display: flex
+    flex-direction: column
+    border-radius: 1rem
+    background-color: white
+    overflow: hidden
+  &__title
+    background: linear-gradient(90deg, $blue-color 46%, $red-color 98%)
+    color: white
+    font-size: $base-font-size
+    font-weight: normal
+    padding: 0.5rem
+  &__table
+    position: relative
+    display: block
+    width: 100%
+    text-align: left
+    max-height: 500px
+    overflow-y: scroll
+    border-collapse: separate
+    border-spacing: 0
+    &__header
+      color: $light-gray
+      & tr
+        position: sticky
+        background-color: white
+        top: 0
+      & th
+        font-weight: normal
+        font-size: $xs-font-size
+        white-space: nowrap
+        padding: 0.3rem
+        border-bottom: 1px solid $light-gray
+  &__row
+    color: $light-gray
+    font-size: $xs-font-size
+    border-bottom: 0.5px solid rgba($light-gray, 0.5)
+    padding: 0.3rem
+    &__transaction
+      color: $blue-color
+      align-items: center
+      font-size: $xs-font-size
+    &__method
+      align-items: center
+    &__value
+      color: $blue-color
+    &__info_text
+      color: $light-gray
+      font-size: $xxs-font-size
+    &__info_value
+      color: $red-color
+  &__icon,
+  &__image
+    margin-right: 0.1rem

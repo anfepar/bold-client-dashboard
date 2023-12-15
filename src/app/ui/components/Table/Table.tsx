@@ -6,13 +6,12 @@ import { Transaction } from "@/app/lib/api/transactions";
 import { formatCurrency } from "@/app/lib/utils/currency";
 import Pagination from "../Pagination/Pagination";
 import { tableConfig } from "./tableConfig";
+import { getDeductionValue } from "@/app/lib/sales";
 
 interface TableProps {
   transactions: Transaction[]
   totalItems: number
 }
-
-const DEDUCTION_PERCENTAGE = 6
 
 export default function Table({ transactions, totalItems }: TableProps) {
   const valueInfo = useCallback((transaction: Transaction) => {
@@ -21,11 +20,11 @@ export default function Table({ transactions, totalItems }: TableProps) {
       <>
         <p>{formatCurrency(transaction.value)}</p>
         <p>Deducción bold</p>
-        <p>{formatCurrency((transaction.value * DEDUCTION_PERCENTAGE) / 100)}</p>
+        <p>{formatCurrency(getDeductionValue(transaction.value))}</p>
       </>
     )
   }, [])
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+
   return (
     <section>
       <table>

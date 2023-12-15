@@ -70,29 +70,29 @@ export default function TableFilters({ filters }: TableFiltersProps) {
           <div className={`${styles.filterContainer} ${styles.filterContainer__open}`}>
             <p>filtrar</p>
             <button onClick={() => setOpenFilterModal(false)} ><FontAwesomeIcon icon={faX} /></button>
+            {openFilterModal && (
+              <div className={styles.filterModal}>
+                <fieldset className={styles.filterModal__inputs}>
+                  <div className={styles.filterModal__input}>
+                    <input checked={filterType === 'terminal'} onChange={handleFilterByTypeChange} id="terminal" type="radio" name="typeFilter"></input>
+                    <label htmlFor="terminal">Cobro con datáfono</label>
+                  </div>
+                  <div className={styles.filterModal__input}>
+                    <input checked={filterType === 'link'} onChange={handleFilterByTypeChange} id="link" type="radio" name="typeFilter"></input>
+                    <label htmlFor="link">Cobros con link de pago</label>
+                  </div>
+                  <div className={styles.filterModal__input}>
+                    <input checked={filterType === 'all'} onChange={handleFilterByTypeChange} id="all" type="radio" name="typeFilter"></input>
+                    <label htmlFor="all">Ver todos</label>
+                  </div>
+                </fieldset>
+                <button className={`${styles.filterModal__button} ${buttonIsDisable() ? styles.filterModal__button__disabled : ''} `} onClick={handleApplyTypeFilter}>
+                  Aplicar
+                </button>
+              </div>
+            )}
           </div>
         }
-        {openFilterModal && (
-          <div className={styles.filterModal}>
-            <fieldset className={styles.filterModal__inputs}>
-              <div className={styles.filterModal__input}>
-                <input checked={filterType === 'terminal'} onChange={handleFilterByTypeChange} id="terminal" type="radio" name="typeFilter"></input>
-                <label htmlFor="terminal">Cobro con datáfono</label>
-              </div>
-              <div className={styles.filterModal__input}>
-                <input checked={filterType === 'link'} onChange={handleFilterByTypeChange} id="link" type="radio" name="typeFilter"></input>
-                <label htmlFor="link">Cobros con link de pago</label>
-              </div>
-              <div className={styles.filterModal__input}>
-                <input checked={filterType === 'all'} onChange={handleFilterByTypeChange} id="all" type="radio" name="typeFilter"></input>
-                <label htmlFor="all">Ver todos</label>
-              </div>
-            </fieldset>
-            <button className={`${styles.filterModal__button} ${buttonIsDisable() ? styles.filterModal__button__disabled : ''} `} onClick={handleApplyTypeFilter}>
-              Aplicar
-            </button>
-          </div>
-        )}
       </div>
     </div >
   )

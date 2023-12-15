@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 
 export type ScreenType = 'mobile' | 'tablet' | 'desktop'
-const mobileSize = 425;
-const tabletSize = 768
+const mobileBreakPoint = 425;
+const tabletBreakPoint = 768
 
 const getScreenType = (width: number): ScreenType => {
-  if (width <= mobileSize) {
+  if (width <= mobileBreakPoint) {
     return 'mobile'
-  } else if (width <= tabletSize) {
+  } else if (width <= tabletBreakPoint) {
     return 'tablet'
   }
   return 'desktop'
